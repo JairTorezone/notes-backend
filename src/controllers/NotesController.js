@@ -1,5 +1,7 @@
+const { response } = require("express");
 const knex = require("../database/knex");
 const { link } = require("../routes");
+const { Knex } = require("knex");
 
 class NotesController {
   async create(request, response) {
@@ -50,6 +52,14 @@ class NotesController {
       tags,
       links,
     });
+  }
+
+  async delete(request, response) {
+    const { id } = request.params;
+
+    await knex("notes").where({ id }).delete();
+
+    return response.json();
   }
 }
 
