@@ -5,7 +5,7 @@ class UsersController {
     const { name, email, password } = request.body;
 
     if (!name) {
-      throw new AppError("Nome é obrigatório!");
+      throw new AppError("Nome do usuário é obrigatório!");
     }
 
     return response.status(201).json({ name, email, password });
